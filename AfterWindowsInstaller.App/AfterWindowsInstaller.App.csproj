@@ -9,8 +9,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\AppsIcon\7-zip_Icon.png" />
+    <None Remove="Resources\AppsIcon\Firefox_Icon.png" />
+    <None Remove="Resources\AppsIcon\Google_Chrome_Icon.png" />
+    <None Remove="Resources\AppsIcon\OBS_Studio_Icon.png" />
+    <None Remove="Resources\AppsIcon\ShareX_Icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AfterWindowsInstaller.Core\AfterWindowsInstaller.Core.csproj" />
     <ProjectReference Include="..\AfterWindowsInstaller.infrastructure\AfterWindowsInstaller.infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\AppsIcon\7-zip_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Firefox_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Google_Chrome_Icon.png" />
+    <Resource Include="Resources\AppsIcon\OBS_Studio_Icon.png" />
+    <Resource Include="Resources\AppsIcon\ShareX_Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

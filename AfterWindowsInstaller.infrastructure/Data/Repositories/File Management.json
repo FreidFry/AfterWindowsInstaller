@@ -1,0 +1,10 @@
+{
+  "File Management": {
+    "7-Zip": {
+      "Owner": "mirror",
+      "Repo": "7-Zip",
+      "Description": "File archiver with a high compression ratio",
+      "IconPath": "Resources\\AppsIcon\\7-zip_Icon.png"
+    }
+  }
+}

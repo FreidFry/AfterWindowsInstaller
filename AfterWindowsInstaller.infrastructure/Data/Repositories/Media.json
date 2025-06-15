@@ -1,0 +1,10 @@
+{
+  "Media": {
+    "ShareX": {
+      "Owner": "ShareX",
+      "Repo": "ShareX",
+      "Description": "Screen capture, file sharing and productivity tool",
+      "IconPath": "Resources/AppsIcon/ShareX_Icon.png"
+    }
+  }
+}
