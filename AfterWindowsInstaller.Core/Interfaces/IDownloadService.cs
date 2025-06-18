@@ -1,10 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections;
+using System.Windows.Controls;
 
 namespace AfterWindowsInstaller.Core.Interfaces
 {
     public interface IDownloadService
     {
-        Task DownloadFileFromGitAsync(string owner, string repo, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
-        Task DownloadFileAllowPathAsync(string url, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
+        Task DownloadFileFromGitAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
+        Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
     }
 }

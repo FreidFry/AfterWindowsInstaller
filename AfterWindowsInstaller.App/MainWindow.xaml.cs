@@ -1,9 +1,11 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
-using static AfterWindowsInstaller.App.Design.Extensions;
+using AfterWindowsInstaller.infrastructure.Persistance.Models;
 
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using AfterWindowsInstaller.App.Resources.AppStorage;
+
+using static AfterWindowsInstaller.App.Design.Extensions;
 
 namespace AfterWindowsInstaller.App
 {
@@ -27,10 +29,14 @@ namespace AfterWindowsInstaller.App
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is CheckBox cb && cb.DataContext is KeyValuePair<string, IDownloadUrlModel> item)
+            if (sender is CheckBox cb && cb.DataContext is KeyValuePair<string, IDownloadUrlModel> kvp)
             {
-                _downloadListStorage.AddToDownloadList(item.Value.Url);
-                ItemForConfirmWindow.AddItem(item.Key, item.Value);
+                var item = new DownloadItem
+                {
+                    Name = kvp.Key,
+                    Model = kvp.Value
+                };
+                _downloadListStorage.AddToDownloadList(item);
             }
         }
 
@@ -38,8 +44,7 @@ namespace AfterWindowsInstaller.App
         {
             if (sender is CheckBox cb && cb.DataContext is KeyValuePair<string, IDownloadUrlModel> item)
             {
-                _downloadListStorage.RemoveFromDownloadList(item.Value.Url);
-                ItemForConfirmWindow.RemoveItem(item.Key);
+                _downloadListStorage.RemoveFromDownloadList(item.Key);
             }
         }
 

@@ -1,14 +1,22 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 
+using System.Collections.ObjectModel;
+
 namespace AfterWindowsInstaller.infrastructure.Data
 {
     public class DownloadListStorage : IDownloadListStorage
     {
-        public List<string> DownloadList { get; set; } = [];
+        public ObservableCollection<IDownloadItem> DownloadList { get; } = [];
 
-        public void AddToDownloadList(string url) => DownloadList.Add(url);
-        public void RemoveFromDownloadList(string url) => DownloadList.Remove(url);
-        public List<string> GetDownloadListFromFile() => DownloadList;
+        public void AddToDownloadList(IDownloadItem programModel)
+            => DownloadList.Add(programModel);
 
+        public void RemoveFromDownloadList(string programName)
+        {
+            var item = DownloadList.FirstOrDefault(x => x.Name == programName);
+            if (item != null) DownloadList.Remove(item);
+        }
+
+        public ObservableCollection<IDownloadItem> GetDownloadFile() => DownloadList;
     }
 }

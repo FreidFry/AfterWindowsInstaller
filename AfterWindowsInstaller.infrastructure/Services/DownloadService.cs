@@ -11,10 +11,12 @@ namespace AfterWindowsInstaller.infrastructure.Services
 {
     public class DownloadService : IDownloadService
     {
-        public async Task DownloadFileFromGitAsync(string owner, string repo, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadFileFromGitAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
         {
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
+            using var client = CreateHttpClient();
+
+            var owner = DownloadUrlModel.Value.Owner;
+            var repo = DownloadUrlModel.Value.Repo;
 
             var response = await client.GetAsync(GetGitUrl(owner, repo), cancellationToken);
             response.EnsureSuccessStatusCode();
@@ -44,18 +46,18 @@ namespace AfterWindowsInstaller.infrastructure.Services
             await DownloadFileAsync(filename, fileResponse, total, currentBar, cancellationToken);
         }
 
-
-
-
-        public async Task DownloadFileAllowPathAsync(string url, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
         {
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
+            using var client = CreateHttpClient();
+
+            var url = DownloadUrlModel.Value.Url;
 
             var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
             response.EnsureSuccessStatusCode();
 
-            var filename = Path.Combine(outputPath, "testDownload.exe");
+            var ProgramName = DownloadUrlModel.Key;
+
+            var filename = Path.Combine(outputPath, ProgramName + ".exe");
             long total = response.Content.Headers.ContentLength ?? -1;
 
             await DownloadFileAsync(filename, response, total, currentBar, cancellationToken);
@@ -63,7 +65,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
 
         static async Task DownloadFileAsync(string filename, HttpResponseMessage responseMessage, long total, IProgress<double> currentBar, CancellationToken cancellationToken)
         {
-            var canReportProgress = total != -1 && currentBar != null;
+            var canReportProgress = CanReportProgress(total, currentBar);
 
             await using var stream = await responseMessage.Content.ReadAsStreamAsync(cancellationToken);
             await using var fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
@@ -71,6 +73,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
             var buffer = new byte[81920];
             long totalRead = 0;
             int read;
+
             while ((read = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken)) > 0)
             {
                 await fileStream.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
@@ -79,5 +82,15 @@ namespace AfterWindowsInstaller.infrastructure.Services
                     currentBar.Report((double)totalRead / total);
             }
         }
+
+        static HttpClient CreateHttpClient()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0"));
+
+            return client;
+        }
+
+        static bool CanReportProgress(long total, IProgress<double> currentBar) => total != -1 && currentBar != null;
     }
 }

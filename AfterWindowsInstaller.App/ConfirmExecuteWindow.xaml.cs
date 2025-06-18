@@ -1,5 +1,5 @@
-﻿using AfterWindowsInstaller.App.Resources.AppStorage;
-using AfterWindowsInstaller.Core.Interfaces;
+﻿using AfterWindowsInstaller.Core.Interfaces;
+using AfterWindowsInstaller.infrastructure;
 
 using System.IO;
 using System.Windows;
@@ -15,19 +15,21 @@ namespace AfterWindowsInstaller.App
     public partial class ConfirmExecuteWindow : Window
     {
         private readonly IDownloadService _downloadService;
+        private readonly IDownloadListStorage _downloadListStorage;
         private readonly ProgressBar _commonProgressBar;
         private readonly ProgressBar _currentProgressBar;
 
         private CancellationTokenSource? _cts;
 
-        public ConfirmExecuteWindow(IDownloadService downloadService)
+        public ConfirmExecuteWindow(IDownloadService downloadService, IDownloadListStorage downloadListStorage)
         {
             _downloadService = downloadService;
+            _downloadListStorage = downloadListStorage;
 
             InitializeComponent();
             ToggleGridFunc();
 
-            ConfirmProgramList.ItemsSource = ItemForConfirmWindow.LocalItems;
+            ConfirmProgramList.ItemsSource = downloadListStorage.GetDownloadFile();
 
             _commonProgressBar = TotalSteps;
             _currentProgressBar = CurrentSteps;
@@ -36,21 +38,22 @@ namespace AfterWindowsInstaller.App
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleGridFunc();
-            var path = Path.Combine(Environment.CurrentDirectory, "Download");
+            var path = USERDATA.USER_DOWNLOADS_PATH;
 
             _cts = new CancellationTokenSource();
 
             IProgress<double> commonProgress = CreateProgressBar(_commonProgressBar);
             try
             {
-                foreach (var item in ItemForConfirmWindow.LocalItems)
+                foreach (var program in _downloadListStorage.DownloadList)
                 {
                     var progress = CreateProgressBar(_currentProgressBar);
+                    var item = KeyValuePair.Create(program.Name, program.Model);
                     if (item.Value.Owner != null || item.Value.Repo != null)
-                        await _downloadService.DownloadFileFromGitAsync(item.Value.Owner, item.Value.Repo, path, progress, _cts.Token);
+                        await _downloadService.DownloadFileFromGitAsync(item, path, progress, _cts.Token);
                     else
-                        await _downloadService.DownloadFileAllowPathAsync(item.Value.Url, path, progress, _cts.Token);
-                    commonProgress.Report(1.0 / ItemForConfirmWindow.LocalItems.Count);
+                        await _downloadService.DownloadFileAllowPathAsync(item, path, progress, _cts.Token);
+                    commonProgress.Report(1.0 / _downloadListStorage.DownloadList.Count);
                 }
                 MessageBox.Show("All files have been downloaded successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }

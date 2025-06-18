@@ -3,17 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:converters="clr-namespace:AfterWindowsInstaller.App.Converters"
-        xmlns:data="clr-namespace:AfterWindowsInstaller.App.Resources.AppStorage"
+        xmlns:conv="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
         Title="ConfirmExecuteWindow" Height="250" Width="400" MinHeight="250" MinWidth="400" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <converters:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
+        <conv:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
     </Window.Resources>
 
     <Grid >
-        <Grid x:Name="ConfirmGrid" Visibility="Collapsed">
+        <Grid x:Name="ConfirmGrid" Visibility="Hidden">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -28,8 +27,8 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
-                                    <Image Width="20" Height="20" Margin="0,0,3,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
-                                    <TextBlock Text="{Binding Key}" VerticalAlignment="Center" FontSize="12"/>
+                                    <Image Width="20" Height="20" Margin="0,0,3,0" Source="{Binding Model.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="12"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

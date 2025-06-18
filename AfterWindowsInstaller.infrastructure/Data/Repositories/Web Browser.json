@@ -3,12 +3,17 @@
     "Firefox": {
       "Url": "https://download.mozilla.org/?product=firefox-stub&os=win",
       "Description": "Fast, private and secure web browser",
-      "IconPath": "Resources\\AppsIcon\\Firefox_Icon.png"
+      "IconPath": "Resources/AppsIcon/Firefox_Icon.png"
     },
     "Chrome": {
       "Url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
       "Description": "Fast, secure and free web browser built for the modern web",
-      "IconPath": "Resources\\AppsIcon\\Google_Chrome_Icon.png"
+      "IconPath": "Resources/AppsIcon/Google_Chrome_Icon.png"
+    },
+    "Opera GX": {
+      "Url": "https://www.opera.com/uk/computer/thanks?ni=eapgx&os=windows",
+      "Description": "Opera GX is the world's first gaming browser",
+      "IconPath": "Resources/AppsIcon/Opera_GX_Icon.png"
     }
   }
 }

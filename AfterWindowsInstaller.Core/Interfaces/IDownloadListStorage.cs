@@ -1,11 +1,13 @@
-﻿namespace AfterWindowsInstaller.Core.Interfaces
+﻿using System.Collections.ObjectModel;
+
+namespace AfterWindowsInstaller.Core.Interfaces
 {
     public interface IDownloadListStorage
     {
-        List<string> DownloadList { get; set; }
+        ObservableCollection<IDownloadItem> DownloadList { get; }
 
-        void AddToDownloadList(string url);
-        void RemoveFromDownloadList(string url);
-        List<string> GetDownloadListFromFile();
+        void AddToDownloadList(IDownloadItem programModel);
+        void RemoveFromDownloadList(string programName);
+        ObservableCollection<IDownloadItem> GetDownloadFile();
     }
 }
