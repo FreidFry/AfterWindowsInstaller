@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
-        Title="ConfirmExecuteWindow" Height="250" Width="400" MinHeight="250" MinWidth="400" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Please confirm your action" Height="250" Width="350" MinHeight="250" MinWidth="350" MaxHeight="250" MaxWidth="350"  SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <conv:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
     </Window.Resources>
 
     <Grid >
-        <Grid x:Name="ConfirmGrid" Visibility="Hidden">
+        <Grid x:Name="ConfirmGrid" Visibility="Collapsed">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -20,8 +20,8 @@
             </Grid.RowDefinitions>
 
             <StackPanel Margin="0 25 0 0" Grid.Row="0" >
-                <TextBlock Grid.Row="0" Text="Confirm" HorizontalAlignment="Center" Margin="0 0 0 10" FontSize="14" />
-                <TextBlock Text="You instaled:" FontSize="14" Margin="10 0 0 0" />
+                <TextBlock x:Name="Title" Grid.Row="0" Text="Confirm" HorizontalAlignment="Center" Margin="0 0 0 10" FontSize="14" />
+                <TextBlock x:Name="Confirm_Message" Text="You are about to download the following programs." TextWrapping="Wrap" FontSize="14" Margin="10 0" />
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10 0 0 0" >
                     <ItemsControl Padding="0 5" Width="Auto" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData}" x:Name="ConfirmProgramList" >
                         <ItemsControl.ItemTemplate>

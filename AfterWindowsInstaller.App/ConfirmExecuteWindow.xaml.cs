@@ -43,8 +43,20 @@ namespace AfterWindowsInstaller.App
 
             _onlyDownload = onlyDownload;
 
-            if (onlyDownload) _totalSteps = _downloadListStorage.DownloadList.Count;
-            else _totalSteps = _downloadListStorage.DownloadList.Count * 2;
+            if (onlyDownload)
+            {
+                _totalSteps = _downloadListStorage.DownloadList.Count;
+                Title.Text = "Confirm Download";
+                Confirm_Message.Text = "You are about to download the following programs.";
+                ConfirmButton.Content = "Download";
+            }
+            else
+            {
+                _totalSteps = _downloadListStorage.DownloadList.Count * 2;
+                Title.Text = "Confirm Download and Install";
+                Confirm_Message.Text = "You are about to download and install the following programs.";
+                ConfirmButton.Content = "Download and Install";
+            }
         }
 
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -61,7 +73,7 @@ namespace AfterWindowsInstaller.App
             {
                 foreach (var program in _downloadListStorage.DownloadList)
                 {
-                    if(_cts.IsCancellationRequested) break;
+                    if (_cts.IsCancellationRequested) break;
                     progressvalue = _downloadListStorage.DownloadList.IndexOf(program) + 1;
                     TotalStepTextBlock.ReportTextBlock($"Downloading... {progressvalue - 1}/{_totalSteps}");
 
@@ -92,7 +104,7 @@ namespace AfterWindowsInstaller.App
                         {
                             var item = KeyValuePair.Create(file.Name, file.Model);
                             CurrentStepTextBlock.ReportTextBlock($"Installing {Path.GetFileNameWithoutExtension(file.Name)}...");
-                            if(!File.Exists(file.Model.FilePath)) continue;
+                            if (!File.Exists(file.Model.FilePath)) continue;
 
                             await _installService.Install(item, _cts.Token);
                         }

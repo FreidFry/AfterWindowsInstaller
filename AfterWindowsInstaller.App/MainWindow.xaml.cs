@@ -1,6 +1,7 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 using AfterWindowsInstaller.infrastructure.Persistance.Models;
 
+using System.Diagnostics.Metrics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,12 +11,11 @@ namespace AfterWindowsInstaller.App
 {
     public partial class MainWindow : Window
     {
+
         readonly IRepositoriesService _repositoriesService;
         readonly IDownloadListStorage _downloadListStorage;
+        readonly IWindowFactory _windowFactory;
 
-
-
-        IWindowFactory _windowFactory;
         public MainWindow(IRepositoriesService repositoriesService, IDownloadListStorage downloadListStorage, IWindowFactory windowFactory)
         {
             _repositoriesService = repositoriesService;
@@ -64,6 +64,17 @@ namespace AfterWindowsInstaller.App
         private void IsContinue_Click(object sender, RoutedEventArgs e)
         {
             _windowFactory.Create<ConfirmExecuteWindow>(OnlyDownloadCheckBox.IsChecked == true).ShowDialog();
+        }
+
+        private void OnlyDownloadCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb)
+            {
+                if (cb.IsChecked == true)
+                    Continue_Button.Content = "Download apps";
+                else
+                    Continue_Button.Content = "Install apps";
+            }
         }
     }
 }

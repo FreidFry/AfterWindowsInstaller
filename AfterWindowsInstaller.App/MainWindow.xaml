@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AfterWindowsInstaller.App"
         xmlns:converters="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="400" Height="450" Width="400" WindowStartupLocation="CenterScreen" >
+        Title="After Windows Installation" MinHeight="450" MinWidth="400" Height="450" Width="400" MaxWidth="400" WindowStartupLocation="CenterScreen" >
 
     <Window.Resources>
         <converters:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="25" Background="#FFF0F0F0">
+        <DockPanel Grid.Row="0" Width="Auto" VerticalAlignment="Top" Height="25" Background="#FFF0F0F0">
             <Menu VerticalAlignment="Center" FontSize="14" Background="Transparent">
                 <MenuItem Header="Edit">
                     <MenuItem Header="Settings" />
@@ -27,20 +27,20 @@
                 <MenuItem Header="About" />
             </Menu>
         </DockPanel>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0 3 0 0">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
             <ItemsControl x:Name="itemsControl" d:ItemsSource="{d:SampleData}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
 
-                        <Expander Header="{Binding Key}" Expanded="Expander_Expanded" IsExpanded="{Binding IsExpanded, Mode=TwoWay}" Width="Auto" >
+                        <Expander Header="{Binding Key}" Expanded="Expander_Expanded" IsExpanded="{Binding IsExpanded, Mode=TwoWay}" Width="Auto" HorizontalAlignment="Stretch" >
                             <Expander.Style>
                                 <Style TargetType="Expander">
 
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Expander">
-                                                <Border BorderThickness="1" BorderBrush="#FFB0B0B0" CornerRadius="5" Padding="5 5" Margin="5" Width="Auto">
+                                                <Border BorderThickness="0,1,0,0" BorderBrush="#FFB0B0B0" Padding="5 5" Margin="2" >
 
                                                     <Grid Width="Auto">
 
@@ -48,15 +48,15 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="*" />
                                                         </Grid.RowDefinitions>
-                                                        <StackPanel Grid.Row="0" Orientation="Horizontal" Width="Auto">
-                                                            <ToggleButton IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                                                        <StackPanel Grid.Row="0" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Stretch">
+                                                            <ToggleButton IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" >
 
                                                                 <ToggleButton.Style>
                                                                     <Style TargetType="ToggleButton">
                                                                         <Setter Property="Template">
                                                                             <Setter.Value>
                                                                                 <ControlTemplate TargetType="ToggleButton">
-                                                                                    <Border Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Width="Auto">
+                                                                                    <Border Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
                                                                                         <ContentPresenter />
                                                                                     </Border>
                                                                                 </ControlTemplate>
@@ -64,16 +64,22 @@
                                                                         </Setter>
                                                                     </Style>
                                                                 </ToggleButton.Style>
-
-                                                                <ToggleButton.RenderTransform>
-                                                                    <RotateTransform x:Name="ArrowTransform" Angle="0" CenterX="8" CenterY="11"/>
-                                                                </ToggleButton.RenderTransform>
-
-                                                                <Viewbox Width="16" Height="16">
-                                                                    <Canvas Width="16" Height="16">
-                                                                        <Path Data="M 4 6 L 8 10 L 12 6" Stroke="Black" StrokeThickness="1"/>
-                                                                    </Canvas>
-                                                                </Viewbox>
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Viewbox Grid.Column="0" Width="16" Height="16">
+                                                                        <Canvas Width="16" Height="16">
+                                                                            <Path Data="M 4 6 L 8 10 L 12 6" Stroke="Black" StrokeThickness="1">
+                                                                                <Path.RenderTransform>
+                                                                                    <RotateTransform x:Name="ArrowTransform" Angle="0" CenterX="8" CenterY="8"/>
+                                                                                </Path.RenderTransform>
+                                                                            </Path>
+                                                                        </Canvas>
+                                                                    </Viewbox>
+                                                                    <TextBlock Grid.Column="1" Text="{TemplateBinding Header}" FontWeight="SemiBold" FontSize="16" Margin="8 0 0 5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" />
+                                                                    </Grid>
                                                                 <ToggleButton.Triggers>
                                                                     <EventTrigger RoutedEvent="ToggleButton.Checked">
                                                                         <BeginStoryboard>
@@ -96,7 +102,6 @@
                                                                 </ToggleButton.Triggers>
 
                                                             </ToggleButton>
-                                                            <TextBlock Text="{TemplateBinding Header}" FontWeight="Bold" FontSize="14" Margin="8 0 0 5" Width="Auto"/>
                                                         </StackPanel>
                                                         <ContentPresenter Grid.Row="1" x:Name="ExpandSite" Content="{TemplateBinding Content}" Margin="0,5,0,0" Width="Auto"/>
                                                     </Grid>
@@ -122,11 +127,11 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
 
-                                        <CheckBox Tag="{Binding}" ToolTip="{Binding Value.Description}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="10 2" Width="Auto">
+                                        <CheckBox Tag="{Binding}" ToolTip="{Binding Value.Description}" Height="20" VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="10 1" Width="Auto">
                                             <CheckBox.Content>
-                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
+                                                <StackPanel Orientation="Horizontal" Width="Auto" >
                                                     <Image Width="20" Height="20" Margin="0,0,3,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
-                                                    <TextBlock Text="{Binding Key}" VerticalAlignment="Center" FontSize="14"/>
+                                                    <TextBlock Text="{Binding Key}" FontWeight="Light" FontSize="14"/>
                                                 </StackPanel>
                                             </CheckBox.Content>
                                         </CheckBox>
@@ -142,11 +147,14 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 8 15 15" HorizontalAlignment="Right" >
-
-            <CheckBox x:Name="OnlyDownloadCheckBox" Content="Only download" Margin="10 0" VerticalAlignment="Center"/>
-            <Button Padding="30 0" Height="24" VerticalAlignment="Center" Click="IsContinue_Click" />
-        </StackPanel>
+        <Grid Grid.Row="2" Margin="0 8 15 15" HorizontalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="OnlyDownloadCheckBox" Grid.Column="0" Content="Only download" Margin="10 0" VerticalAlignment="Center" Checked="OnlyDownloadCheckBox_Checked" Unchecked="OnlyDownloadCheckBox_Checked" />
+            <Button x:Name="Continue_Button" Padding="30 0" Grid.Column="1" Height="24" VerticalAlignment="Center" Click="IsContinue_Click" Content="Install" />
+        </Grid>
 
     </Grid>
 </Window>
