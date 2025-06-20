@@ -3,7 +3,10 @@
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 using static AfterWindowsInstaller.infrastructure.Extensions.UrlExtensions;
 
@@ -46,21 +49,31 @@ namespace AfterWindowsInstaller.infrastructure.Services
             await DownloadFileAsync(filename, fileResponse, total, currentBar, cancellationToken);
         }
 
-        public async Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
         {
-            using var client = CreateHttpClient();
+            try
+            {
+                using var client = CreateHttpClient();
 
-            var url = DownloadUrlModel.Value.Url;
+                var url = downloadUrlModel.Value.Url;
 
-            var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-            response.EnsureSuccessStatusCode();
+                var programName = GetName(url, downloadUrlModel.Key);
+                var filename = Path.Combine(outputPath, programName);
+                var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"{programName} HTTP error: {response.StatusCode}");
+                    return;
+                }
 
-            var ProgramName = DownloadUrlModel.Key;
-
-            var filename = Path.Combine(outputPath, ProgramName + ".exe");
-            long total = response.Content.Headers.ContentLength ?? -1;
-
-            await DownloadFileAsync(filename, response, total, currentBar, cancellationToken);
+                long total = response.Content.Headers.ContentLength ?? -1;
+                await DownloadFileAsync(filename, response, total, currentBar, cancellationToken);
+                downloadUrlModel.Value.FilePath = filename;
+            }
+            catch
+            {
+                MessageBox.Show($"Ошибка загрузки {downloadUrlModel.Key} из-за недоступности URL: {downloadUrlModel.Value.Url}");
+            }
         }
 
         static async Task DownloadFileAsync(string filename, HttpResponseMessage responseMessage, long total, IProgress<double> currentBar, CancellationToken cancellationToken)
@@ -81,6 +94,13 @@ namespace AfterWindowsInstaller.infrastructure.Services
                 if (canReportProgress)
                     currentBar.Report((double)totalRead / total);
             }
+        }
+        static string GetName(string url, string Name)
+        {
+            var Extension = Path.GetExtension(url);
+            if (string.IsNullOrEmpty(Extension)) Extension = ".exe";
+
+            return Name + Extension;
         }
 
         static HttpClient CreateHttpClient()

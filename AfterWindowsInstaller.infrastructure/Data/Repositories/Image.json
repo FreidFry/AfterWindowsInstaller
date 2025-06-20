@@ -1,0 +1,11 @@
+{
+  "Image": {
+    "IrvanView": {
+      "Url": "https://download.dappcdn.com/expiretime=1750443774;badurl=aHR0cHM6Ly9kYXBwY2RuLmNvbS9wcm90ZWN0ZWQv/bd70c0437173cf360ca9996a66bcb4941871bbafa2c8cb1b4f3e95d639c1177d/irfanview/iview472_x64_setup.exe",
+      "Description": "IrfanView is a fast and compact image viewer/converter that supports many formats",
+      "IconPath": "Resources/AppsIcon/IrvanView_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}

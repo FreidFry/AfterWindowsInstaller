@@ -10,15 +10,26 @@
 
   <ItemGroup>
     <None Remove="Resources\AppsIcon\7-zip_Icon.png" />
+    <None Remove="Resources\AppsIcon\Audacity_Icon.png" />
+    <None Remove="Resources\AppsIcon\Brave_Icon.png" />
+    <None Remove="Resources\AppsIcon\Discord_Icon.png" />
+    <None Remove="Resources\AppsIcon\Epic_Games_Launcher_Icon.png" />
     <None Remove="Resources\AppsIcon\Firefox_Icon.png" />
     <None Remove="Resources\AppsIcon\Google_Chrome_Icon.png" />
+    <None Remove="Resources\AppsIcon\IrvanView_Icon.png" />
+    <None Remove="Resources\AppsIcon\K-Lite_Codec_Pack_Icon.png" />
     <None Remove="Resources\AppsIcon\OBS_Studio_Icon.png" />
+    <None Remove="Resources\AppsIcon\Opera_GX_Icon.png" />
+    <None Remove="Resources\AppsIcon\Opera_Icon.png" />
     <None Remove="Resources\AppsIcon\ShareX_Icon.png" />
+    <None Remove="Resources\AppsIcon\Spotify_Icon.png" />
+    <None Remove="Resources\AppsIcon\Steam_Icon.png" />
+    <None Remove="Resources\AppsIcon\SumatraPDF_Icon.png" />
+    <None Remove="Resources\AppsIcon\Ubisoft_Connect_Icon.png" />
+    <None Remove="Resources\AppsIcon\VLC_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="14.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
@@ -29,12 +40,26 @@
 
   <ItemGroup>
     <Resource Include="Resources\AppsIcon\7-zip_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Audacity_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Brave_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Discord_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Epic_Games_Launcher_Icon.png" />
     <Resource Include="Resources\AppsIcon\Firefox_Icon.png" />
     <Resource Include="Resources\AppsIcon\Google_Chrome_Icon.png" />
+    <Resource Include="Resources\AppsIcon\IrvanView_Icon.png" />
+    <Resource Include="Resources\AppsIcon\K-Lite_Codec_Pack_Icon.png" />
     <Resource Include="Resources\AppsIcon\OBS_Studio_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Opera_GX_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Opera_Icon.png" />
+    <Resource Include="Resources\AppsIcon\WinRAR_Icon.png" />
     <Resource Include="Resources\AppsIcon\ShareX_Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\AppsIcon\Spotify_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Steam_Icon.png" />
+    <Resource Include="Resources\AppsIcon\SumatraPDF_Icon.png" />
+    <Resource Include="Resources\AppsIcon\Ubisoft_Connect_Icon.png" />
+    <Resource Include="Resources\AppsIcon\VLC_Icon.png" />
   </ItemGroup>
 
 </Project>

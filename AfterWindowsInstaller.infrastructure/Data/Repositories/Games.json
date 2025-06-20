@@ -1,0 +1,25 @@
+{
+  "Games": {
+    "Steam": {
+      "Url": "https://cdn.fastly.steamstatic.com/client/installer/SteamSetup.exe",
+      "Description": "Steam is a digital distribution platform for video games",
+      "IconPath": "Resources/AppsIcon/Steam_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Epic Games Launcher": {
+      "Url": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-18.7.0.msi?launcherfilename=EpicInstaller-18.7.0.msi",
+      "Description": "Epic Games Launcher is a digital distribution platform for video games",
+      "IconPath": "Resources/AppsIcon/Epic_Games_Launcher_Icon.png",
+      "Verb": "runas",
+      "Arguments": null
+    },
+    "Ubisoft Connect": {
+      "Url": "https://static3.cdn.ubi.com/orbit/launcher_installer/UbisoftConnectInstaller.exe",
+      "Description": "Ubisoft Connect is a digital distribution platform for video games",
+      "IconPath": "Resources/AppsIcon/Ubisoft_Connect_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}

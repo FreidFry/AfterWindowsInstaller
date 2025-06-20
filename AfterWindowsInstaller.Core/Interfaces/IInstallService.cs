@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AfterWindowsInstaller.Core.Interfaces
+﻿namespace AfterWindowsInstaller.Core.Interfaces
 {
-    internal interface IInstallService
+    public interface IInstallService
     {
+        Task Install(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken);
     }
 }

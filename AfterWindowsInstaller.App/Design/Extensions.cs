@@ -22,5 +22,11 @@ namespace AfterWindowsInstaller.App.Design
         }
 
         public static Progress<double> CreateProgressBar(ProgressBar progressBar) => new(value => progressBar.Value = value * 100);
+
+        public static void ReportTextBlock(this TextBlock textBlock, string text)
+        {
+            if (textBlock == null) return;
+            textBlock.Text = text;
+        }
     }
 }

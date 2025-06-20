@@ -9,16 +9,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\Repositories\File Management.json" />
     <None Remove="Data\Repositories\Media.json" />
     <None Remove="Data\Repositories\Web Browser.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\Repositories\File Management.json">
+    <EmbeddedResource Include="Data\Repositories\Documetns.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Repositories\File Manager.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Repositories\Image.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Repositories\Games.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Repositories\Media.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Repositories\Messaging.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Repositories\Web Browser.json">

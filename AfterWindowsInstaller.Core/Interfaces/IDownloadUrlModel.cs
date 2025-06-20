@@ -24,6 +24,22 @@
 
         /// <summary>
         /// Icon of the repository in Base64 format.
-        public string IconPath { get; }
+        /// </summary>
+        string IconPath { get; }
+
+        /// <summary>
+        /// Verb for the installation command, if applicable.
+        /// </summary>
+        string? Verb { get; }
+
+        /// <summary>
+        /// Arguments for the installation command, if applicable.
+        /// </summary>
+        string? Arguments { get; }
+
+        /// <summary>
+        /// File path for the downloaded file, if applicable.
+        /// </summary>  
+        string? FilePath { get; set; }
     }
 }

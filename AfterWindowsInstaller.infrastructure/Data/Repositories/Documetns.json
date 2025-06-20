@@ -1,0 +1,11 @@
+{
+  "Documetns": {
+    "Sumatra PDF": {
+      "Url": "https://www.sumatrapdfreader.org/dl/rel/3.5.2/SumatraPDF-3.5.2-64-install.exe",
+      "Description": "Sumatra PDF is a free PDF, eBook, XPS, DjVu, CHM, Comic Book (CBZ and CBR) reader for Windows",
+      "IconPath": "Resources/AppsIcon/SumatraPDF_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}

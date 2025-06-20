@@ -1,0 +1,11 @@
+{
+  "Messaging": {
+    "Discord": {
+      "Url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64",
+      "Description": "",
+      "IconPath": "Resources/AppsIcon/Discord_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}

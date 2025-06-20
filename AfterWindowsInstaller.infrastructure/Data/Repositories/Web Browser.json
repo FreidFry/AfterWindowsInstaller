@@ -3,17 +3,37 @@
     "Firefox": {
       "Url": "https://download.mozilla.org/?product=firefox-stub&os=win",
       "Description": "Fast, private and secure web browser",
-      "IconPath": "Resources/AppsIcon/Firefox_Icon.png"
+      "IconPath": "Resources/AppsIcon/Firefox_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     },
     "Chrome": {
       "Url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
       "Description": "Fast, secure and free web browser built for the modern web",
-      "IconPath": "Resources/AppsIcon/Google_Chrome_Icon.png"
+      "IconPath": "Resources/AppsIcon/Google_Chrome_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Opera": {
+      "Url": "https://net.geo.opera.com/opera/stable/windows?utm_tryagain=yes",
+      "Description": "Opera is a fast and secure web browser with a built-in ad blocker",
+      "IconPath": "Resources/AppsIcon/Opera_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     },
     "Opera GX": {
-      "Url": "https://www.opera.com/uk/computer/thanks?ni=eapgx&os=windows",
+      "Url": "https://net.geo.opera.com/opera_gx/stable/windows?utm_tryagain=yes",
       "Description": "Opera GX is the world's first gaming browser",
-      "IconPath": "Resources/AppsIcon/Opera_GX_Icon.png"
+      "IconPath": "Resources/AppsIcon/Opera_GX_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Brave": {
+      "Url": "https://referrals.brave.com/latest/BraveBrowserSetup-BRV010.exe",
+      "Description": "Brave is a free and open-source web browser based on the Chromium web browser",
+      "IconPath": "Resources/AppsIcon/Brave_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     }
   }
 }

@@ -1,7 +1,6 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 using AfterWindowsInstaller.infrastructure.Persistance.Models;
 
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,6 +24,10 @@ namespace AfterWindowsInstaller.App
 
             InitializeComponent();
             itemsControl.ItemsSource = _repositoriesService.RegistrationRepositories();
+
+#if DEBUG
+            OnlyDownloadCheckBox.IsChecked = true;
+#endif
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -60,7 +63,7 @@ namespace AfterWindowsInstaller.App
 
         private void IsContinue_Click(object sender, RoutedEventArgs e)
         {
-            _windowFactory.Create<ConfirmExecuteWindow>().ShowDialog();
+            _windowFactory.Create<ConfirmExecuteWindow>(OnlyDownloadCheckBox.IsChecked == true).ShowDialog();
         }
     }
 }
