@@ -1,7 +1,6 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 using AfterWindowsInstaller.infrastructure.Persistance.Models;
-
-using System.Diagnostics.Metrics;
+ 
 using System.Windows;
 using System.Windows.Controls;
 

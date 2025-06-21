@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AfterWindowsInstaller.App"
         xmlns:converters="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
-        Title="After Windows Installation" MinHeight="450" MinWidth="400" Height="450" Width="400" MaxWidth="400" WindowStartupLocation="CenterScreen" >
+        Title="After Windows Installation" MinHeight="450" MinWidth="400" Height="450" Width="400" MaxWidth="400" WindowStartupLocation="CenterScreen" Icon="/AFWI_WindowIcon.png" >
 
     <Window.Resources>
         <converters:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
@@ -130,7 +130,7 @@
                                         <CheckBox Tag="{Binding}" ToolTip="{Binding Value.Description}" Height="20" VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="10 1" Width="Auto">
                                             <CheckBox.Content>
                                                 <StackPanel Orientation="Horizontal" Width="Auto" >
-                                                    <Image Width="20" Height="20" Margin="0,0,3,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
+                                                    <Image Width="16" Height="16" Margin="0,0,5,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
                                                     <TextBlock Text="{Binding Key}" FontWeight="Light" FontSize="14"/>
                                                 </StackPanel>
                                             </CheckBox.Content>

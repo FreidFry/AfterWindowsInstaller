@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
-        Title="Please confirm your action" Height="250" Width="350" MinHeight="250" MinWidth="350" MaxHeight="250" MaxWidth="350"  SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Please confirm your action" Height="250" Width="350" MinHeight="250" MinWidth="350" MaxHeight="250" MaxWidth="350"  SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/AFWI_WindowIcon.png">
 
     <Window.Resources>
         <conv:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />

@@ -2,13 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>AFWI_Icon.ico</ApplicationIcon>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AFWI_Icon_hi.png" />
+    <None Remove="AFWI_WindowIcon.png" />
     <None Remove="Resources\AppsIcon\7-zip_Icon.png" />
     <None Remove="Resources\AppsIcon\Audacity_Icon.png" />
     <None Remove="Resources\AppsIcon\Brave_Icon.png" />
@@ -30,6 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="AFWI_Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
@@ -39,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="AFWI_WindowIcon.png" />
     <Resource Include="Resources\AppsIcon\7-zip_Icon.png" />
     <Resource Include="Resources\AppsIcon\Audacity_Icon.png" />
     <Resource Include="Resources\AppsIcon\Brave_Icon.png" />
