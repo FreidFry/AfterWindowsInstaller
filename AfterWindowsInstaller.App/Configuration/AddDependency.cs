@@ -18,6 +18,7 @@ namespace AfterWindowsInstaller.App.Configuration
             services.AddScoped<IDownloadUrlModel, DownloadUrlModel>();
             services.AddScoped<IDownloadService, DownloadService>();
             services.AddScoped<IInstallService, InstallService>();
+            services.AddScoped<IRemoveFilesService, RemoveFilesService>();
 
             services.AddScoped<IWindowFactory, ConfirmWindowFactory>();
 

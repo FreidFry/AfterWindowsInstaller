@@ -39,7 +39,11 @@ namespace AfterWindowsInstaller.infrastructure.Services
                     break;
                 }
 
-            if (downloadUrl == null) throw new Exception("Asset не найден.");
+            if (downloadUrl == null)
+            {
+                MessageBox.Show("Not fnd any .exe files in the latest release of the repository.");
+                return;
+            }
 
             using var fileResponse = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
             fileResponse.EnsureSuccessStatusCode();

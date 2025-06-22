@@ -18,6 +18,7 @@ namespace AfterWindowsInstaller.App
         private readonly IDownloadService _downloadService;
         private readonly IDownloadListStorage _downloadListStorage;
         private readonly IInstallService _installService;
+        private readonly IRemoveFilesService _removeFilesService;
 
         private readonly ProgressBar _commonProgressBar;
         private readonly ProgressBar _currentProgressBar;
@@ -27,11 +28,12 @@ namespace AfterWindowsInstaller.App
         private bool _onlyDownload;
         private double _totalSteps = 0;
 
-        public ConfirmExecuteWindow(bool onlyDownload, IDownloadService downloadService, IDownloadListStorage downloadListStorage, IInstallService installService)
+        public ConfirmExecuteWindow(bool onlyDownload, IDownloadService downloadService, IDownloadListStorage downloadListStorage, IInstallService installService, IRemoveFilesService removeFilesService)
         {
             _downloadService = downloadService;
             _downloadListStorage = downloadListStorage;
             _installService = installService;
+            _removeFilesService = removeFilesService;
 
             InitializeComponent();
             ToggleGridFunc();
@@ -113,6 +115,9 @@ namespace AfterWindowsInstaller.App
                             MessageBox.Show($"Error installing {file}: {ex.Message}", "Installation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
+
+                    bool isDelete = MessageBox.Show($"Do you want to delete the downloaded files?\nPath: {USERDATA.USER_DOWNLOADS_PATH}", "Delete files", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+                    if (isDelete) _removeFilesService.RemoveAllFiles().Wait();
                 }
 
                 MessageBox.Show("All successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
