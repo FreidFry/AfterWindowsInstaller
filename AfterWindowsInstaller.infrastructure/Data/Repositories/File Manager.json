@@ -1,14 +1,14 @@
 {
   "File Manager": {
     "7-zip": {
-      "Url": "https://www.7-zip.org/a/7z2409-x64.exe",
+      "WingetUrl": "7zip.7zip",
       "Description": "IrfanView is a fast and compact image viewer/converter that supports many formats",
       "IconPath": "Resources/AppsIcon/7-zip_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
     "WinRAR": {
-      "Url": "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-711.exe",
+      "WingetUrl": "RARLab.WinRAR",
       "Description": "WinRAR is a powerful archive manager that can create and unpack RAR and ZIP files",
       "IconPath": "Resources/AppsIcon/WinRAR_Icon.png",
       "Verb": "runas",

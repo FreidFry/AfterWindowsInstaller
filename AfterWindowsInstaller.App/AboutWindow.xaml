@@ -1,0 +1,33 @@
+﻿<Window x:Class="AfterWindowsInstaller.App.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AfterWindowsInstaller.App"
+        mc:Ignorable="d"
+        Title="AboutWindow" Height="Auto" Width="Auto" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Icon="/AFWI_WindowIcon.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock x:Name="Info" HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBlock Text="A tool to help you install programs after a fresh installation Windows." HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBlock Text="Developed by: Politov Michail" HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBlock Text="If you want support me:" HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBlock Text="PayPal (USD)" HorizontalAlignment="Center" TextAlignment="Center" />
+            <Button Content="Donate" Click="PayPalDonateButton_Click" HorizontalAlignment="Center" Margin="0 0 0 10" Padding="20 0" />
+            <TextBlock Text="Boosty" HorizontalAlignment="Center" TextAlignment="Center" />
+            <Button Content="Donate" Click="BoostyDonateButton_Click" HorizontalAlignment="Center" Margin="0 0 0 10" Padding="20 0" />
+            <TextBlock Text="Monobank Jar (UAH)" HorizontalAlignment="Center" TextAlignment="Center" />
+            <Button Content="Donate" Click="MonoBankJarButton_Click" HorizontalAlignment="Center" Margin="0 0 0 10" Padding="20 0" />
+
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" x:Name="Copyrignt" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" TextWrapping="Wrap" />
+        <Button Grid.Row="1" Content="OK" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15 0" Margin="0 0 15 15" Click="CloseButton_Click" />
+
+    </Grid>
+</Window>

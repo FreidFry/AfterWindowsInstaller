@@ -1,6 +1,7 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 using AfterWindowsInstaller.infrastructure.Persistance.Models;
 
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
@@ -31,13 +32,15 @@ namespace AfterWindowsInstaller.infrastructure.Services
                 repositories.Add(parsed.Last().Key, parsed.Last().Value);
             }
 
-            return repositories.ToDictionary(
-                kvp => kvp.Key,
-                kvp => kvp.Value.ToDictionary(
-                    innerKvp => innerKvp.Key,
-                    innerKvp => (IDownloadUrlModel)innerKvp.Value
-                )
-            );
+            return repositories
+                .OrderBy(kvp => kvp.Key)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.ToDictionary(
+                        innerKvp => innerKvp.Key,
+                        innerKvp => (IDownloadUrlModel)innerKvp.Value
+                    )
+                );
 
         }
     }

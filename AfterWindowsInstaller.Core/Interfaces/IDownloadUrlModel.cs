@@ -18,6 +18,11 @@
         string? Owner { get; }
 
         /// <summary>
+        /// Winget URL of the repository, if applicable.
+        /// </summary>
+        string? WingetUrl { get; }
+
+        /// <summary>
         /// Description of the repository.
         /// </summary>
         string Description { get; }

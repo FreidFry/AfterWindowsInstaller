@@ -24,7 +24,7 @@
                 <MenuItem Header="Edit">
                     <MenuItem Header="Settings" />
                 </MenuItem>
-                <MenuItem Header="About" />
+                <MenuItem Header="About" Click="OpenAboutWindow_Click" />
             </Menu>
         </DockPanel>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
@@ -130,7 +130,7 @@
                                         <CheckBox Tag="{Binding}" ToolTip="{Binding Value.Description}" Height="20" VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="10 1" Width="Auto">
                                             <CheckBox.Content>
                                                 <StackPanel Orientation="Horizontal" Width="Auto" >
-                                                    <Image Width="16" Height="16" Margin="0,0,5,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
+                                                    <Image  Width="16" Height="16" Margin="0,0,5,0" Source="{Binding Value.IconPath, Converter={StaticResource IconPathToImageSourceConverter}}" />
                                                     <TextBlock Text="{Binding Key}" FontWeight="Light" FontSize="14"/>
                                                 </StackPanel>
                                             </CheckBox.Content>

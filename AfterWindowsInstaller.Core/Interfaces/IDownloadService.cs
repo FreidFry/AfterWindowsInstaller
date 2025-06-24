@@ -7,5 +7,6 @@ namespace AfterWindowsInstaller.Core.Interfaces
     {
         Task DownloadFileFromGitAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
         Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
+        Task DownloadWingetAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken);
     }
 }

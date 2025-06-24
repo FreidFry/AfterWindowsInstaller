@@ -24,6 +24,7 @@ namespace AfterWindowsInstaller.App.Configuration
 
             services.AddTransient<ConfirmExecuteWindow>();
             services.AddTransient<MainWindow>();
+            services.AddTransient<AboutWindow>();
 
             return services;
         }

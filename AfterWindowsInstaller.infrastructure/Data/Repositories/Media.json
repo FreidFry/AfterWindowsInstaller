@@ -1,38 +1,44 @@
 {
   "Media": {
     "ShareX": {
-      "Owner": "ShareX",
-      "Repo": "ShareX",
+      "WingetUrl": "ShareX.ShareX",
       "Description": "Screen capture, file sharing and productivity tool",
       "IconPath": "Resources/AppsIcon/ShareX_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
     "VLC Media Player": {
-      "Url": "https://mirrors.rda.run/videolan/vlc/3.0.21/win32/vlc-3.0.21-win32.exe",
+      "WingetUrl": "VideoLAN.VLC",
       "Description": "VLC Media Player is a free and open-source, cross-platform media player and streaming media server",
       "IconPath": "Resources/AppsIcon/VLC_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
     "Audacity": {
-      "Url": "https://muse-cdn.com/Audacity_Installer_via_MuseHub.exe",
+      "WingetUrl": "Audacity.Audacity",
       "Description": "Audacity is a free, open source, cross-platform audio software for multi-track recording and editing",
       "IconPath": "Resources/AppsIcon/Audacity_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
     "K-Lite Codec Pack": {
-      "Url": "https://files2.codecguide.com/K-Lite_Codec_Pack_1901_Standard.exe",
+      "WingetUrl": "CodecGuide.K-LiteCodecPack.Mega",
       "Description": "K-Lite Codec Pack is a collection of codecs, DirectShow filters and tools",
       "IconPath": "Resources/AppsIcon/K-Lite_Codec_Pack_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
     "Spotify": {
-      "Url": "https://download.scdn.co/SpotifySetup.exe",
+      "WingetUrl": "Spotify.Spotify",
       "Description": "Spotify is a digital music service that gives you access to millions of songs",
       "IconPath": "Resources/AppsIcon/Spotify_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OBS Studio": {
+      "WingetUrl": "OBSProject.OBSStudio",
+      "Description": "OBS Studio is free and open source software for video recording and live streaming",
+      "IconPath": "Resources/AppsIcon/OBS_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     }

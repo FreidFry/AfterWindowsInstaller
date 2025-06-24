@@ -75,5 +75,14 @@ namespace AfterWindowsInstaller.App
                     Continue_Button.Content = "Install apps";
             }
         }
+
+        private void OpenAboutWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var aboutWindow = new AboutWindow
+            {
+                Owner = this
+            };
+            aboutWindow.ShowDialog();
+        }
     }
 }

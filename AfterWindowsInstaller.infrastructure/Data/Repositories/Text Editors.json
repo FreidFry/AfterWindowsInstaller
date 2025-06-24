@@ -1,0 +1,11 @@
+{
+  "Text Editors": {
+    "Sublime Text": {
+      "WingetUrl": "SublimeHQ.SublimeText.4",
+      "Description": "Sublime Text is a sophisticated text editor for code, markup and prose",
+      "IconPath": "Resources/AppsIcon/SublimeText_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}

@@ -83,6 +83,8 @@ namespace AfterWindowsInstaller.App
                     var item = KeyValuePair.Create(program.Name, program.Model);
                     if (item.Value.Owner != null || item.Value.Repo != null)
                         await _downloadService.DownloadFileFromGitAsync(item, path, progress, _cts.Token);
+                    else if (item.Value.WingetUrl != null)
+                        await _downloadService.DownloadWingetAsync(item, path, progress, _cts.Token);
                     else
                         await _downloadService.DownloadFileAllowPathAsync(item, path, progress, _cts.Token);
 

@@ -1,11 +1,10 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
 
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Policy;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Windows;
 
 using static AfterWindowsInstaller.infrastructure.Extensions.UrlExtensions;
@@ -41,7 +40,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
 
             if (downloadUrl == null)
             {
-                MessageBox.Show("Not fnd any .exe files in the latest release of the repository.");
+                MessageBox.Show("Not found any .exe files in the latest release of the repository.");
                 return;
             }
 
@@ -76,7 +75,24 @@ namespace AfterWindowsInstaller.infrastructure.Services
             }
             catch
             {
-                MessageBox.Show($"Ошибка загрузки {downloadUrlModel.Key} из-за недоступности URL: {downloadUrlModel.Value.Url}");
+                MessageBox.Show($"Error downloading {downloadUrlModel.Key} out of reach URL: {downloadUrlModel.Value.Url}");
+            }
+        }
+
+        public async Task DownloadWingetAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var url = downloadUrlModel.Value.WingetUrl;
+
+                await WinGetDownloadAsync(url, outputPath, currentBar, cancellationToken);
+
+                var filePath = Path.Combine(outputPath, url.Split('.')[0]);
+                downloadUrlModel.Value.FilePath = filePath;
+            }
+            catch
+            {
+                MessageBox.Show($"Error downloading {downloadUrlModel.Key} from the Winget URL: {downloadUrlModel.Value.WingetUrl}");
             }
         }
 
@@ -88,7 +104,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
             await using var fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
 
             var buffer = new byte[81920];
-            long totalRead = 0;
+            double totalRead = 0;
             int read;
 
             while ((read = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken)) > 0)
@@ -96,9 +112,27 @@ namespace AfterWindowsInstaller.infrastructure.Services
                 await fileStream.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
                 totalRead += read;
                 if (canReportProgress)
-                    currentBar.Report((double)totalRead / total);
+                    currentBar.Report(totalRead / total);
             }
         }
+
+        static async Task WinGetDownloadAsync(string url, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        {
+            using var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "winget",
+                    Arguments = $"download -q \"{url}\" -d \"{outputPath}\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+            await process.WaitForExitAsync(cancellationToken);
+        }
+
         static string GetName(string url, string Name)
         {
             var Extension = Path.GetExtension(url);

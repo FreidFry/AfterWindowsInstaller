@@ -1,9 +1,16 @@
 {
   "Messaging": {
     "Discord": {
-      "Url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64",
+      "WingetUrl": "Discord.Discord",
       "Description": "",
       "IconPath": "Resources/AppsIcon/Discord_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Telegram": {
+      "WingetUrl": "Telegram.TelegramDesktop",
+      "Description": "Telegram is a cloud-based instant messaging service that focuses on speed and security, allowing users to send messages, photos, videos, and files of any type",
+      "IconPath": "Resources/AppsIcon/Telegram_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     }

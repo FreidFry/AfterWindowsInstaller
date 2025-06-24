@@ -11,13 +11,24 @@ namespace AfterWindowsInstaller.App.Converters
             System.Diagnostics.Debug.WriteLine("IconPathToImageSourceConverter called with value: " + value);
             if (value is string relativePath && !string.IsNullOrEmpty(relativePath))
             {
-                string assemblyName = "AfterWindowsInstaller.App";
-                
-                var path = relativePath.Replace('\\', '/');
-                var uriString = $"pack://application:,,,/{assemblyName};component/{path}";
+                var uriString = string.Empty;
+                if (relativePath.StartsWith("http")) uriString = relativePath;
+                else
+                {
+                    string assemblyName = "AfterWindowsInstaller.App";
+
+                    var path = relativePath.Replace('\\', '/');
+                    uriString = $"pack://application:,,,/{assemblyName};component/{path}";
+                }
                 try
                 {
-                    return new BitmapImage(new Uri(uriString));
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(uriString);
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    bitmap.Freeze();
+                    return bitmap;
                 }
                 catch
                 {

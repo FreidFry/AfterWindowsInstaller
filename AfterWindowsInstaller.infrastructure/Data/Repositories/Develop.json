@@ -1,0 +1,60 @@
+{
+  "Develop": {
+    "Docker Desktop": {
+      "WingetUrl": "Docker.DockerDesktop",
+      "Description": "Docker Desktop is an application for MacOS and Windows that enables you to build, share, and run containerized applications",
+      "IconPath": "Resources/AppsIcon/DockerDesktop_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Git": {
+      "WingetUrl": "Git.Git",
+      "Description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency",
+      "IconPath": "Resources/AppsIcon/Git_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "GitHub Desktop": {
+      "WingetUrl": "GitHub.GitHubDesktop",
+      "Description": "GitHub Desktop is an open-source Electron-based GitHub app for Windows and macOS",
+      "IconPath": "Resources/AppsIcon/GitHubDesktop_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Visual Studio Code": {
+      "WingetUrl": "Microsoft.VisualStudioCode",
+      "Description": "Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS",
+      "IconPath": "Resources/AppsIcon/VisualStudioCode_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Node.js": {
+      "WingetUrl": "OpenJS.NodeJS.LTS",
+      "Description": "Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser",
+      "IconPath": "Resources/AppsIcon/NodeJS_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Visual Studio Community 2022": {
+      "WingetUrl": "Microsoft.VisualStudio.2022.Community",
+      "Description": "Visual Studio Community is a free, fully-featured IDE for students, open-source and individual developers",
+      "IconPath": "Resources/AppsIcon/VisualStudio_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Python 3.10": {
+      "WingetUrl": "Python.Python.3.10",
+      "Description": "Python is a programming language that lets you work quickly and integrate systems more effectively",
+      "IconPath": "Resources/AppsIcon/Python_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Cursor": {
+      "WingetUrl": "Anysphere.Cursor",
+      "Description": "Cursor is a modern code editor for developers, built on top of Visual Studio Code",
+      "IconPath": "Resources/AppsIcon/Cursor_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    }
+  }
+}
