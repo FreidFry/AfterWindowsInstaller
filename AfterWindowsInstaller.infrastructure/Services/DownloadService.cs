@@ -118,7 +118,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
 
         static async Task WinGetDownloadAsync(string url, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
         {
-            using var process = new Process
+            var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -130,6 +130,8 @@ namespace AfterWindowsInstaller.infrastructure.Services
                     CreateNoWindow = true
                 }
             };
+            process.Start();
+
             await process.WaitForExitAsync(cancellationToken);
         }
 
