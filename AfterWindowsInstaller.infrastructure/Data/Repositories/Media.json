@@ -3,65 +3,47 @@
     "ShareX": {
       "WingetUrl": "ShareX.ShareX",
       "Description": "Screen capture, file sharing and productivity tool",
-      "IconPath": "Resources/AppsIcon/ShareX_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/ShareX_Icon.png"
     },
     "VLC Media Player": {
       "WingetUrl": "VideoLAN.VLC",
       "Description": "VLC Media Player is a free and open-source, cross-platform media player and streaming media server",
-      "IconPath": "Resources/AppsIcon/VLC_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VLC_Icon.png"
     },
     "AIMP": {
       "WingetUrl": "AIMP.AIMP",
       "Description": "AIMP is a free audio player for Windows that supports a wide range of audio formats and offers advanced features like sound effects, equalizer, and playlist management",
-      "IconPath": "Resources/AppsIcon/AIMP_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/AIMP_Icon.png"
     },
     "PotPlayer": {
       "WingetUrl": "Daum.PotPlayer",
       "Description": "PotPlayer is a free media player for Windows that supports a wide range of video and audio formats, offering advanced features like subtitle support, video capture, and customizable skins",
-      "IconPath": "Resources/AppsIcon/PotPlayer_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/PotPlayer_Icon.png"
     },
     "Audacity": {
       "WingetUrl": "Audacity.Audacity",
       "Description": "Audacity is a free, open source, cross-platform audio software for multi-track recording and editing",
-      "IconPath": "Resources/AppsIcon/Audacity_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Audacity_Icon.png"
     },
     "K-Lite Codec Pack": {
       "WingetUrl": "CodecGuide.K-LiteCodecPack.Mega",
       "Description": "K-Lite Codec Pack is a collection of codecs, DirectShow filters and tools",
-      "IconPath": "Resources/AppsIcon/K-Lite_Codec_Pack_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/K-Lite_Codec_Pack_Icon.png"
     },
     "MPC-HC": {
       "WingetUrl": "clsid2.mpc-hc",
       "Description": "MPC-HC is a lightweight, open source media player for Windows that supports a wide range of video and audio formats, offering advanced features like subtitle support, video capture, and customizable skins",
-      "IconPath": "Resources/AppsIcon/MPC_HC_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/MPC_HC_Icon.png"
     },
     "Spotify": {
       "WingetUrl": "Spotify.Spotify",
       "Description": "Spotify is a digital music service that gives you access to millions of songs",
-      "IconPath": "Resources/AppsIcon/Spotify_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Spotify_Icon.png"
     },
     "OBS Studio": {
       "WingetUrl": "OBSProject.OBSStudio",
       "Description": "OBS Studio is free and open source software for video recording and live streaming",
-      "IconPath": "Resources/AppsIcon/OBS_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/OBS_Icon.png"
     }
   }
 }

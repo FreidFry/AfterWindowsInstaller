@@ -2,31 +2,23 @@
   "Messaging": {
     "Discord": {
       "WingetUrl": "Discord.Discord",
-      "Description": "",
-      "IconPath": "Resources/AppsIcon/Discord_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "Description": "Discord is a free voice, video, and text chat app for gamers and communities, allowing users to create servers, join channels, and communicate with friends and groups",
+      "IconPath": "Resources/AppsIcon/Discord_Icon.png"
     },
     "Telegram": {
       "WingetUrl": "Telegram.TelegramDesktop",
       "Description": "Telegram is a cloud-based instant messaging service that focuses on speed and security, allowing users to send messages, photos, videos, and files of any type",
-      "IconPath": "Resources/AppsIcon/Telegram_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Telegram_Icon.png"
     },
     "Zoom": {
       "WingetUrl": "Zoom.Zoom",
       "Description": "Zoom is a cloud-based video conferencing service that allows users to host and join online meetings, webinars, and virtual events with features like screen sharing, recording, and chat",
-      "IconPath": "Resources/AppsIcon/Zoom_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Zoom_Icon.png"
     },
     "WhatsApp": {
       "WingetUrl": "9NKSQGP7F2NH",
       "Description": "WhatsApp is a free messaging app that allows users to send text messages, make voice and video calls, and share images, documents, and other media over the internet",
-      "IconPath": "Resources/AppsIcon/WhatsApp_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/WhatsApp_Icon.png"
     }
   }
 }

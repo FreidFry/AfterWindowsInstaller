@@ -3,9 +3,7 @@
     "DeepL": {
       "WingetUrl": "DeepL.DeepL",
       "Description": "DeepL is a translation service that uses artificial intelligence to provide high-quality translations",
-      "IconPath": "Resources/AppsIcon/DeepL_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/DeepL_Icon.png"
     }
   }
 }

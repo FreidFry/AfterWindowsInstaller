@@ -3,51 +3,37 @@
     "Everything": {
       "WingetUrl": "voidtools.Everything",
       "Description": "Everything is a desktop search utility for Windows that allows you to quickly find files and folders by name.",
-      "IconPath": "Resources/AppsIcon/Everything_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Everything_Icon.png"
     },
     "HWMonitor": {
       "WingetUrl": "CPUID.HWMonitor",
       "Description": "HWMonitor is a hardware monitoring program that reads PC systems' main health sensors: voltages, temperatures, and fan speeds.",
-      "IconPath": "Resources/AppsIcon/HWMonitor_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/HWMonitor_Icon.png"
     },
     "CPU-Z": {
       "WingetUrl": "CPUID.CPU-Z",
       "Description": "CPU-Z is a freeware system profiling and monitoring application for Microsoft Windows that gathers information on some of the main devices in your system.",
-      "IconPath": "Resources/AppsIcon/CPU-Z_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/CPU-Z_Icon.png"
     },
     "GPU-Z": {
       "WingetUrl": "TechPowerUp.GPU-Z",
       "Description": "GPU-Z is a lightweight utility designed to provide vital information about your video card and graphics processor.",
-      "IconPath": "Resources/AppsIcon/GPU-Z_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/GPU-Z_Icon.png"
     },
     "Crystal Disk Info": {
       "WingetUrl": "CrystalDewWorld.CrystalDiskInfo",
       "Description": "CrystalDiskInfo is a HDD/SSD utility software which supports a part of USB, Intel RAID and NVMe.",
-      "IconPath": "Resources/AppsIcon/CrystalDiskInfo_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/CrystalDiskInfo_Icon.png"
     },
     "Autoruns": {
       "WingetUrl": "Microsoft.Sysinternals.Autoruns",
       "Description": "Autoruns shows you what programs are configured to run during system bootup or login, and when you start various built-in Windows applications.",
-      "IconPath": "Resources/AppsIcon/Autoruns_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Autoruns_Icon.png"
     },
     "CCleaner": {
       "WingetUrl": "Piriform.CCleaner",
       "Description": "CCleaner is a utility program used to clean potentially unwanted files and invalid Windows Registry entries from a computer.",
-      "IconPath": "Resources/AppsIcon/CCleaner_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/CCleaner_Icon.png"
     }
   }
   }

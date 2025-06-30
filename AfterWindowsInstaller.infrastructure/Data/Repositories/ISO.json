@@ -3,16 +3,12 @@
     "Rufus": {
       "WingetUrl": "Rufus.Rufus",
       "Description": "Rufus is a utility that helps format and create bootable USB flash drives, such as USB keys or pen drives, memory sticks, etc.",
-      "IconPath": "Resources/AppsIcon/Rufus_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Rufus_Icon.png"
     },
     "Ventoy": {
       "WingetUrl": "Ventoy.Ventoy",
       "Description": "Ventoy is an open-source tool to create bootable USB drives for ISO files, allowing you to boot multiple ISO files from a single USB drive without needing to reformat it each time.",
-      "IconPath": "Resources/AppsIcon/Ventoy_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Ventoy_Icon.png"
     }
   }
 }

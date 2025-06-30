@@ -3,9 +3,7 @@
     "SpaceDesk": {
       "wingetUrl": "Datronicsoft.SpacedeskDriver.Server",
       "Description": "SpaceDesk is a software that allows you to use your tablet or smartphone as a second monitor for your Windows PC",
-      "IconPath": "Resources/AppsIcon/SpaceDesk_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/SpaceDesk_Icon.png"
     }
   }
 }

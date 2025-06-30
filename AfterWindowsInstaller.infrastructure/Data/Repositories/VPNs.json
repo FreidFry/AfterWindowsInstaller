@@ -3,9 +3,7 @@
     "Warp": {
       "WingetUrl": "Cloudflare.Warp",
       "Description": "Cloudflare Warp is a free VPN service that encrypts your internet traffic and hides your IP address",
-      "IconPath": "Resources/AppsIcon/Warp_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Warp_Icon.png"
     }
   }
 }

@@ -3,9 +3,7 @@
     "IrvanView": {
       "WingetUrl": "IrfanSkiljan.IrfanView",
       "Description": "IrfanView is a fast and compact image viewer/converter that supports many formats",
-      "IconPath": "Resources/AppsIcon/IrvanView_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/IrvanView_Icon.png"
     },
     "Picasa 3": {
       "Url": "https://github.com/FreidFry/AfterWindowsInstaller/raw/refs/heads/master/Another%20Installer/picasa-3-9-141-259.exe",
@@ -17,9 +15,7 @@
     "Upscayl": {
       "WingetUrl": "Upscayl.Upscayl",
       "Description": "Upscale is a free and open-source image upscaler that uses AI to enhance images",
-      "IconPath": "Resources/AppsIcon/Upscayl_Icon.png",
-      "Verb": "runas",
-      "arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Upscayl_Icon.png"
     }
   }
 }

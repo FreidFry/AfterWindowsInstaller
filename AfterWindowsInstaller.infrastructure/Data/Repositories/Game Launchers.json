@@ -3,30 +3,22 @@
     "Steam": {
       "WingetUrl": "Valve.Steam",
       "Description": "Steam is a digital distribution platform for video games",
-      "IconPath": "Resources/AppsIcon/Steam_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Steam_Icon.png"
     },
     "Epic Games Launcher": {
       "WingetUrl": "EpicGames.EpicGamesLauncher",
       "Description": "Epic Games Launcher is a digital distribution platform for video games",
-      "IconPath": "Resources/AppsIcon/Epic_Games_Launcher_Icon.png",
-      "Verb": "runas",
-      "Arguments": null
+      "IconPath": "Resources/AppsIcon/Epic_Games_Launcher_Icon.png"
     },
     "Ubisoft Connect": {
       "WingetUrl": "Ubisoft.Connect",
       "Description": "Ubisoft Connect is a digital distribution platform for video games",
-      "IconPath": "Resources/AppsIcon/Ubisoft_Connect_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Ubisoft_Connect_Icon.png"
     },
     "EA Launcher": {
       "WingetUrl": "ElectronicArts.EADesktop",
       "Description": "EA Desktop is a digital distribution platform for video games by Electronic Arts",
-      "IconPath": "Resources/AppsIcon/EA_Desktop_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/EA_Desktop_Icon.png"
     }
   }
 }

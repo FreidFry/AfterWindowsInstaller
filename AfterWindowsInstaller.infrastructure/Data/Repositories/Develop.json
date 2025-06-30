@@ -3,114 +3,82 @@
     "Docker Desktop": {
       "WingetUrl": "Docker.DockerDesktop",
       "Description": "Docker Desktop is an application for MacOS and Windows that enables you to build, share, and run containerized applications",
-      "IconPath": "Resources/AppsIcon/DockerDesktop_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/DockerDesktop_Icon.png"
     },
     "Git": {
       "WingetUrl": "Git.Git",
       "Description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency",
-      "IconPath": "Resources/AppsIcon/Git_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Git_Icon.png"
     },
     "GitHub Desktop": {
       "WingetUrl": "GitHub.GitHubDesktop",
       "Description": "GitHub Desktop is an open-source Electron-based GitHub app for Windows and macOS",
-      "IconPath": "Resources/AppsIcon/GitHubDesktop_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/GitHubDesktop_Icon.png"
     },
     "Visual Studio Code": {
       "WingetUrl": "Microsoft.VisualStudioCode",
       "Description": "Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS",
-      "IconPath": "Resources/AppsIcon/VisualStudioCode_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualStudioCode_Icon.png"
     },
     "Node.js": {
       "WingetUrl": "OpenJS.NodeJS.LTS",
       "Description": "Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser",
-      "IconPath": "Resources/AppsIcon/NodeJS_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/NodeJS_Icon.png"
     },
     "Visual Studio Community 2022": {
       "WingetUrl": "Microsoft.VisualStudio.2022.Community",
       "Description": "Visual Studio Community is a free, fully-featured IDE for students, open-source and individual developers",
-      "IconPath": "Resources/AppsIcon/VisualStudio_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualStudio_Icon.png"
     },
     "Python 3.10": {
       "WingetUrl": "Python.Python.3.10",
       "Description": "Python is a programming language that lets you work quickly and integrate systems more effectively",
-      "IconPath": "Resources/AppsIcon/Python_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Python_Icon.png"
     },
     "Cursor": {
       "WingetUrl": "Anysphere.Cursor",
       "Description": "Cursor is a modern code editor for developers, built on top of Visual Studio Code",
-      "IconPath": "Resources/AppsIcon/Cursor_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Cursor_Icon.png"
     },
     "IntelliJ IDEA Community Edition": {
       "WingetUrl": "JetBrains.IntelliJIDEA.Community",
       "Description": "IntelliJ IDEA Community Edition is a free and open-source integrated development environment (IDE) for Java development",
-      "IconPath": "Resources/AppsIcon/IntelliJ_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/IntelliJ_Icon.png"
     },
     ".NET SDK 7.0": {
       "WingetUrl": "Microsoft.DotNet.SDK.7",
       "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
-      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png"
     },
     ".NET SDK 8.0": {
       "WingetUrl": "Microsoft.DotNet.SDK.8",
       "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
-      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png"
     },
     ".NET SDK 9.0": {
       "WingetUrl": "Microsoft.DotNet.SDK.9",
       "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
-      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png"
     },
     "OpenJDK 11": {
       "WingetUrl": "ojdkbuild.openjdk.11.jdk",
       "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
-      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png"
     },
     "OpenJDK 13": {
       "WingetUrl": "ojdkbuild.openjdk.13.jdk",
       "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
-      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png"
     },
     "OpenJDK 14": {
       "WingetUrl": "ojdkbuild.openjdk.14.jdk",
       "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
-      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png"
     },
     "OpenJDK 17": {
       "WingetUrl": "ojdkbuild.openjdk.17.jdk",
       "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
-      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png"
     }
   }
 }

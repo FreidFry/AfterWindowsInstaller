@@ -3,65 +3,47 @@
     "Visual C++ 2008 x64": {
       "WingetUrl": "Microsoft.VCRedist.2008.x64",
       "Description": "Microsoft Visual C++ 2008 Redistributable Package (x64) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2008 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Visual C++ 2008 x86": {
       "WingetUrl": "Microsoft.VCRedist.2008.x86",
       "Description": "Microsoft Visual C++ 2008 Redistributable Package (x86) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2008 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Microsoft Visual C++ 2005": {
       "WingetUrl": "Microsoft.VCRedist.2005.x86",
       "Description": "Microsoft Visual C++ 2005 Redistributable Package (x86) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2005 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Visual C++ 2010 x64": {
       "WingetUrl": "Microsoft.VCRedist.2010.x64",
       "Description": "Microsoft Visual C++ 2010 Redistributable Package (x64) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2010 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Visual C++ 2010 x86": {
       "WingetUrl": "Microsoft.VCRedist.2010.x86",
       "Description": "Microsoft Visual C++ 2010 Redistributable Package (x86) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2010 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Microsoft Visual C++ 2015-2022 Pack x64": {
       "WingetUrl": "Microsoft.VCRedist.2015+.x64",
       "Description": "Microsoft Visual C++ 2015-2022 Redistributable (x64) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2015-2022 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Microsoft Visual C++ 2015-2022 Pack x86": {
       "WingetUrl": "Microsoft.VCRedist.2015+.x86",
       "Description": "Microsoft Visual C++ 2015-2022 Redistributable (x86) installs runtime components of Visual C++ Libraries required to run applications developed with Visual C++ on a computer that does not have Visual C++ 2015-2022 installed",
-      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/VisualC++_Icon.png"
     },
     "Java": {
       "WingetUrl": "Oracle.JavaRuntimeEnvironment",
       "Description": "Java Runtime Environment (JRE) is a set of software tools for development of Java applications",
-      "IconPath": "Resources/AppsIcon/Java_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Java_Icon.png"
     },
     "PhysX": {
       "WingetUrl": "Nvidia.PhysX",
       "Description": "NVIDIA PhysX is a physics engine middleware SDK developed by NVIDIA, designed to provide real-time physics simulation in games and other applications",
-      "IconPath": "Resources/AppsIcon/PhysX_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/PhysX_Icon.png"
     }
 
   }

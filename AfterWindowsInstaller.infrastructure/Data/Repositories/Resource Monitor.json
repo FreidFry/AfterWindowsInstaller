@@ -3,16 +3,12 @@
     "AIDA64 Extreme": {
       "WingetUrl": "FinalWire.AIDA64.Extreme",
       "Description": "AIDA64 Extreme is a system information, diagnostics, and benchmarking tool for Windows",
-      "IconPath": "Resources/AppsIcon/AIDA64_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/AIDA64_Icon.png"
     },
     "RivaTuner": {
       "WingetUrl": "Guru3D.RTSS",
       "Description": "RivaTuner is a free overclocking utility for NVIDIA and AMD graphics cards",
-      "IconPath": "Resources/AppsIcon/RivaTuner_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/RivaTuner_Icon.png"
     }
 
   }

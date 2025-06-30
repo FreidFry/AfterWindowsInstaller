@@ -3,37 +3,27 @@
     "Firefox": {
       "WingetUrl": "Mozilla.Firefox",
       "Description": "Fast, private and secure web browser",
-      "IconPath": "Resources/AppsIcon/Firefox_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Firefox_Icon.png"
     },
     "Chrome": {
       "WingetUrl": "Google.Chrome",
       "Description": "Fast, secure and free web browser built for the modern web",
-      "IconPath": "Resources/AppsIcon/Google_Chrome_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Google_Chrome_Icon.png"
     },
     "Opera": {
       "WingetUrl": "Opera.Opera",
       "Description": "Opera is a fast and secure web browser with a built-in ad blocker",
-      "IconPath": "Resources/AppsIcon/Opera_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Opera_Icon.png"
     },
     "Opera GX": {
       "WingetUrl": "Opera.OperaGX",
       "Description": "Opera GX is the world's first gaming browser",
-      "IconPath": "Resources/AppsIcon/Opera_GX_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Opera_GX_Icon.png"
     },
     "Brave": {
       "WingetUrl": "Brave.Brave",
       "Description": "Brave is a free and open-source web browser based on the Chromium web browser",
-      "IconPath": "Resources/AppsIcon/Brave_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
+      "IconPath": "Resources/AppsIcon/Brave_Icon.png"
     }
   }
 }
