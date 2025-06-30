@@ -1,4 +1,5 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
+using AfterWindowsInstaller.infrastructure.Extensions;
 
 using System.Diagnostics;
 using System.IO;
@@ -13,12 +14,15 @@ namespace AfterWindowsInstaller.infrastructure.Services
 {
     public class DownloadService : IDownloadService
     {
-        public async Task DownloadFileFromGitAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadFileFromGitAsync(KeyValuePair<string, IDownloadUrlModel> DownloadUrlModel, string outputPath, CancellationToken cancellationToken)
         {
             using var client = CreateHttpClient();
 
             var owner = DownloadUrlModel.Value.Owner;
             var repo = DownloadUrlModel.Value.Repo;
+
+            if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repo))
+                return;
 
             var response = await client.GetAsync(GetGitUrl(owner, repo), cancellationToken);
             response.EnsureSuccessStatusCode();
@@ -49,16 +53,18 @@ namespace AfterWindowsInstaller.infrastructure.Services
 
             var filename = Path.Combine(outputPath, Path.GetFileName(downloadUrl));
 
-            await DownloadFileAsync(filename, fileResponse, total, currentBar, cancellationToken);
+            await DownloadFileAsync(filename, fileResponse, cancellationToken);
         }
 
-        public async Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadFileAllowPathAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, CancellationToken cancellationToken)
         {
             try
             {
                 using var client = CreateHttpClient();
 
                 var url = downloadUrlModel.Value.Url;
+                if (string.IsNullOrEmpty(url))
+                    return;
 
                 var programName = GetName(url, downloadUrlModel.Key);
                 var filename = Path.Combine(outputPath, programName);
@@ -70,7 +76,7 @@ namespace AfterWindowsInstaller.infrastructure.Services
                 }
 
                 long total = response.Content.Headers.ContentLength ?? -1;
-                await DownloadFileAsync(filename, response, total, currentBar, cancellationToken);
+                await DownloadFileAsync(filename, response, cancellationToken);
                 downloadUrlModel.Value.FilePath = filename;
             }
             catch
@@ -79,44 +85,52 @@ namespace AfterWindowsInstaller.infrastructure.Services
             }
         }
 
-        public async Task DownloadWingetAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        public async Task DownloadWingetAsync(KeyValuePair<string, IDownloadUrlModel> downloadUrlModel, string outputPath, CancellationToken cancellationToken)
         {
             try
             {
                 var url = downloadUrlModel.Value.WingetUrl;
+                if (string.IsNullOrEmpty(url))
+                    return;
 
-                await WinGetDownloadAsync(url, outputPath, currentBar, cancellationToken);
+                await WinGetDownloadAsync(url, outputPath, cancellationToken);
 
                 var filePath = Path.Combine(outputPath, url.Split('.')[0]);
                 downloadUrlModel.Value.FilePath = filePath;
+            }
+            catch (OperationCanceledException)
+            {
+                MessageBox.Show("Download canceled by user.");
             }
             catch
             {
                 MessageBox.Show($"Error downloading {downloadUrlModel.Key} from the Winget URL: {downloadUrlModel.Value.WingetUrl}");
             }
+            finally
+            {
+                if (Directory.Exists(USERDATA.USER_DOWNLOADS_PATH))
+                {
+                    string[] files = Directory.GetFiles(USERDATA.USER_DOWNLOADS_PATH, "*.yaml", SearchOption.AllDirectories);
+                    foreach (var file in files) File.Delete(file);
+                }
+            }
         }
 
-        static async Task DownloadFileAsync(string filename, HttpResponseMessage responseMessage, long total, IProgress<double> currentBar, CancellationToken cancellationToken)
+        static async Task DownloadFileAsync(string filename, HttpResponseMessage responseMessage, CancellationToken cancellationToken)
         {
-            var canReportProgress = CanReportProgress(total, currentBar);
-
             await using var stream = await responseMessage.Content.ReadAsStreamAsync(cancellationToken);
             await using var fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
 
             var buffer = new byte[81920];
-            double totalRead = 0;
             int read;
 
             while ((read = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken)) > 0)
             {
                 await fileStream.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
-                totalRead += read;
-                if (canReportProgress)
-                    currentBar.Report(totalRead / total);
             }
         }
 
-        static async Task WinGetDownloadAsync(string url, string outputPath, IProgress<double> currentBar, CancellationToken cancellationToken)
+        static async Task WinGetDownloadAsync(string url, string outputPath, CancellationToken cancellationToken)
         {
             var process = new Process
             {
@@ -128,11 +142,13 @@ namespace AfterWindowsInstaller.infrastructure.Services
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     CreateNoWindow = true
-                }
+                },
+                EnableRaisingEvents = true
+
             };
             process.Start();
 
-            await process.WaitForExitAsync(cancellationToken);
+            await process.ListenProcessAsync(cancellationToken);
         }
 
         static string GetName(string url, string Name)
@@ -150,7 +166,5 @@ namespace AfterWindowsInstaller.infrastructure.Services
 
             return client;
         }
-
-        static bool CanReportProgress(long total, IProgress<double> currentBar) => total != -1 && currentBar != null;
     }
 }

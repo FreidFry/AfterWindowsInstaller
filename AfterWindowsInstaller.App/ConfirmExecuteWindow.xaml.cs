@@ -1,8 +1,10 @@
-﻿using AfterWindowsInstaller.Core.Interfaces;
+﻿using AfterWindowsInstaller.App.Design;
+using AfterWindowsInstaller.Core.Interfaces;
 using AfterWindowsInstaller.infrastructure;
+using AfterWindowsInstaller.infrastructure.Extensions;
 
+using System.ComponentModel;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,12 +23,12 @@ namespace AfterWindowsInstaller.App
         private readonly IRemoveFilesService _removeFilesService;
 
         private readonly ProgressBar _commonProgressBar;
-        private readonly ProgressBar _currentProgressBar;
 
         private CancellationTokenSource? _cts;
+        private bool _isProcessing = false;
 
-        private bool _onlyDownload;
-        private double _totalSteps = 0;
+        private readonly bool _onlyDownload;
+        private readonly double _totalSteps = 0;
 
         public ConfirmExecuteWindow(bool onlyDownload, IDownloadService downloadService, IDownloadListStorage downloadListStorage, IInstallService installService, IRemoveFilesService removeFilesService)
         {
@@ -36,12 +38,15 @@ namespace AfterWindowsInstaller.App
             _removeFilesService = removeFilesService;
 
             InitializeComponent();
+
+            ConfirmGrid.Visibility = Visibility.Collapsed;
+            ProgressGrid.Visibility = Visibility.Collapsed;
+
             ToggleGridFunc();
 
             ConfirmProgramList.ItemsSource = downloadListStorage.GetDownloadFile();
 
             _commonProgressBar = TotalSteps;
-            _currentProgressBar = CurrentSteps;
 
             _onlyDownload = onlyDownload;
 
@@ -63,10 +68,9 @@ namespace AfterWindowsInstaller.App
 
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
+            _isProcessing = true;
             ToggleGridFunc();
-            if (!Directory.Exists(USERDATA.USER_DOWNLOADS_PATH))
-                Directory.CreateDirectory(USERDATA.USER_DOWNLOADS_PATH);
-            var path = USERDATA.USER_DOWNLOADS_PATH;
+            var path = USERDATA.USER_DOWNLOADS_PATH.CreateDirectoryIfNotExists();
 
             _cts = new CancellationTokenSource();
             double progressvalue = 0;
@@ -77,65 +81,54 @@ namespace AfterWindowsInstaller.App
                 {
                     if (_cts.IsCancellationRequested) break;
                     progressvalue = _downloadListStorage.DownloadList.IndexOf(program) + 1;
-                    TotalStepTextBlock.ReportTextBlock($"Downloading... {progressvalue - 1}/{_totalSteps}");
 
-                    var progress = CreateProgressBar(_currentProgressBar);
+                    base.Title = $"Progress {progressvalue}/{_totalSteps}";
+
+                    TotalStepTextBlock.ReportTextBlock($"Downloading... {progressvalue}/{_totalSteps}");
+                    CurrentStepTextBlock.ReportTextBlock($"Downloading {program.Name}...");
+
                     var item = KeyValuePair.Create(program.Name, program.Model);
-                    if (item.Value.Owner != null || item.Value.Repo != null)
-                        await _downloadService.DownloadFileFromGitAsync(item, path, progress, _cts.Token);
-                    else if (item.Value.WingetUrl != null)
-                        await _downloadService.DownloadWingetAsync(item, path, progress, _cts.Token);
-                    else
-                        await _downloadService.DownloadFileAllowPathAsync(item, path, progress, _cts.Token);
-
+                    await DownloadAsync(item, path);
 
                     commonProgress.Report(progressvalue / _downloadListStorage.DownloadList.Count);
-                    CurrentStepTextBlock.ReportTextBlock($"Downloading {program.Name}...");
                 }
-
-                commonProgress.Report(progressvalue / _downloadListStorage.DownloadList.Count);
 
                 if (!_onlyDownload)
                 {
                     foreach (var file in _downloadListStorage.DownloadList)
                     {
-                        TotalStepTextBlock.ReportTextBlock($"Installing... {progressvalue - 1}/{_totalSteps}");
+                        progressvalue += 1;
+                        base.Title = $"Progress {progressvalue}/{_totalSteps}";
+                        TotalStepTextBlock.ReportTextBlock($"Installing... {progressvalue}/{_totalSteps}");
 
                         commonProgress.Report(progressvalue / _downloadListStorage.DownloadList.Count);
-                        progressvalue += 1;
 
                         try
                         {
                             var item = KeyValuePair.Create(file.Name, file.Model);
-                            CurrentStepTextBlock.ReportTextBlock($"Installing {Path.GetFileNameWithoutExtension(file.Name)}...");
-                            if (!File.Exists(file.Model.FilePath)) continue;
 
-                            await _installService.Install(item, _cts.Token);
+                            CurrentStepTextBlock.ReportTextBlock($"Installing {Path.GetFileNameWithoutExtension(file.Name)}...");
+
+                            await InstallAsync(item, file);
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show($"Error installing {file}: {ex.Message}", "Installation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-
-                    bool isDelete = MessageBox.Show($"Do you want to delete the downloaded files?\nPath: {USERDATA.USER_DOWNLOADS_PATH}", "Delete files", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
-                    if (isDelete) _removeFilesService.RemoveAllFiles().Wait();
+                    _removeFilesService.RemoveAllFiles().Wait();
                 }
-
-                MessageBox.Show("All successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (!_cts.IsCancellationRequested) MessageBox.Show("All successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch
             {
-                MessageBox.Show("Downloaded canceled!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Downloaded error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
+                _isProcessing = false;
                 this.Close();
-                ToggleGridFunc();
             }
-
-
-
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e) => this.Close();
@@ -153,11 +146,45 @@ namespace AfterWindowsInstaller.App
                 ProgressGrid.Visibility = Visibility.Collapsed;
             }
         }
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (_isProcessing) СancellationProgress_Click(null, null);
+            else
+            {
+                _cts?.Cancel();
+                _cts?.Dispose();
+            }
 
-        private void CancelProgress_Click(object sender, RoutedEventArgs e)
+        }
+
+        private void СancellationProgress_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("You realy want to cancel the download?", "Cancel download", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes) _cts?.Cancel();
+        }
+
+        private async Task DownloadAsync(KeyValuePair<string, IDownloadUrlModel> item, string path)
+        {
+            if (_cts == null) return;
+            if (item.Value.WingetUrl != null && _onlyDownload)
+                await _downloadService.DownloadWingetAsync(item, path, _cts.Token);
+            else if (item.Value.Owner != null || item.Value.Repo != null)
+                await _downloadService.DownloadFileFromGitAsync(item, path, _cts.Token);
+            else if (item.Value.Url != null)
+                await _downloadService.DownloadFileAllowPathAsync(item, path, _cts.Token);
+        }
+
+        private async Task InstallAsync(KeyValuePair<string, IDownloadUrlModel> item, IDownloadItem file)
+        {
+            if (_cts == null) return;
+            if (item.Value.WingetUrl != null)
+            {
+                await _installService.WingetInstall(item, _cts.Token);
+                return;
+            }
+            if (!File.Exists(file.Model.FilePath)) return;
+
+            await _installService.Install(item, _cts.Token);
         }
     }
 }

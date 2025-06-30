@@ -1,4 +1,5 @@
 ﻿using AfterWindowsInstaller.Core.Interfaces;
+using AfterWindowsInstaller.infrastructure.Extensions;
 
 using System.Diagnostics;
 using System.IO;
@@ -22,33 +23,70 @@ namespace AfterWindowsInstaller.infrastructure.Services
             }
         }
 
-        public Task InstallExe(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken)
+        public static Task InstallExe(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken)
         {
             var model = item.Value;
 
-            Process.Start(new ProcessStartInfo
+            var process = new Process
             {
-                FileName = item.Key,
-                UseShellExecute = true,
-                Verb = model.Verb ?? string.Empty,
-                Arguments = model.Arguments ?? string.Empty,
-            });
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = item.Key,
+                    UseShellExecute = true,
+                    Verb = model.Verb ?? string.Empty,
+                    Arguments = model.Arguments ?? string.Empty,
+                },
+                EnableRaisingEvents = true
+            };
 
-            return Task.CompletedTask;
+            process.Start();
+
+            return process.ListenProcessAsync(cancellationToken);
         }
-        public Task InstallMsi(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken)
+        public static async Task InstallMsi(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken)
         {
             var model = item.Value;
 
-            Process.Start(new ProcessStartInfo
+            var process = new Process
             {
-                FileName = "msiexec",
-                UseShellExecute = true,
-                Verb = model.Verb ?? string.Empty,
-                Arguments = $"/i {model.FilePath} /qn /norestart"
-            });
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "msiexec",
+                    UseShellExecute = true,
+                    Verb = model.Verb ?? string.Empty,
+                    Arguments = $"/i {model.FilePath} /qn /norestart"
+                },
+                EnableRaisingEvents = true
+            };
 
-            return Task.CompletedTask;
+            process.Start();
+
+            await process.ListenProcessAsync(cancellationToken);
+
+        }
+
+        public async Task WingetInstall(KeyValuePair<string, IDownloadUrlModel> item, CancellationToken cancellationToken)
+        {
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "winget",
+                    Arguments = $"install -q \"{item.Value.WingetUrl}\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    RedirectStandardInput = true,
+                },
+                EnableRaisingEvents = true
+            };
+
+            process.Start();
+            process.StandardInput.WriteLine("y");
+
+            await process.ListenProcessAsync(cancellationToken);
+
         }
     }
 }

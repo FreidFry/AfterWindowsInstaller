@@ -6,12 +6,13 @@ namespace AfterWindowsInstaller.App.Converters
 {
     public class IconPathToImageSourceConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             System.Diagnostics.Debug.WriteLine("IconPathToImageSourceConverter called with value: " + value);
             if (value is string relativePath && !string.IsNullOrEmpty(relativePath))
             {
-                var uriString = string.Empty;
+                string? uriString;
+
                 if (relativePath.StartsWith("http")) uriString = relativePath;
                 else
                 {

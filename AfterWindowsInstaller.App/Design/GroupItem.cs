@@ -7,8 +7,8 @@ namespace AfterWindowsInstaller.App.Design
 {
     public class GroupItem : INotifyPropertyChanged
     {
-        public string Key { get; set; }
-        public ObservableCollection<KeyValuePair<string, DownloadUrlModel>> Items { get; set; }
+        public string Key { get; set; } = "Empty Group";
+        public ObservableCollection<KeyValuePair<string, DownloadUrlModel>>? Items { get; set; }
 
         private bool _isExpanded;
         public bool IsExpanded
@@ -26,8 +26,8 @@ namespace AfterWindowsInstaller.App.Design
             }
         }
 
-        public event EventHandler Expanded;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler? Expanded;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string prop) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }

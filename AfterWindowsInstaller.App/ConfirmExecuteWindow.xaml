@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:AfterWindowsInstaller.App.Converters"
         mc:Ignorable="d"
-        Title="Please confirm your action" Height="250" Width="350" MinHeight="250" MinWidth="350" MaxHeight="250" MaxWidth="350"  SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/AFWI_WindowIcon.png">
+        Closing="Window_Closing"
+        Title="Please confirm your action" Height="250" Width="350" MinHeight="250" MinWidth="350" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/AFWI_WindowIcon.png">
 
     <Window.Resources>
         <conv:IconPathToImageSourceConverter x:Key="IconPathToImageSourceConverter" />
@@ -44,18 +45,37 @@
 
         </Grid>
 
-        <Grid x:Name="ProgressGrid" Visibility="Collapsed">
+        <Grid x:Name="ProgressGrid" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" VerticalAlignment="Center">
                 <TextBlock x:Name="TotalStepTextBlock" Text="Installing..." HorizontalAlignment="Center" Margin="0 25 0 10" FontSize="14" />
-                <ProgressBar x:Name="TotalSteps" Height="20" Margin="10 0 10 3" Minimum="0" Maximum="100" />
+                <ProgressBar x:Name="TotalSteps" Height="15" Margin="10 0 10 3" Minimum="0" Maximum="100" />
                 <TextBlock x:Name="CurrentStepTextBlock" Text="Installing..." HorizontalAlignment="Center" Margin="0 3 0 10" FontSize="14" />
-                <ProgressBar x:Name="CurrentSteps" Height="20" Margin="10 0 10 45" Minimum="0" Maximum="100" />
+
+                <Canvas Width="50" Height="50">
+                    <Ellipse Width="40" Height="40" Stroke="Gray" StrokeThickness="5" Opacity="0.3" />
+                    <Ellipse Width="40" Height="40" Stroke="#428fa6" StrokeThickness="5" StrokeDashArray="3 100" RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="spinnerRotate" />
+                        </Ellipse.RenderTransform>
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="spinnerRotate" Storyboard.TargetProperty="Angle"
+                                         From="0" To="360" Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+                    </Ellipse>
+                </Canvas>
+
             </StackPanel>
-            <Button Grid.Row="1" HorizontalAlignment="Right" x:Name="CancelProgressButton" Content="Cancel" Margin="5" Width="100" Click="CancelProgress_Click"/>
+            <Button Grid.Row="1" HorizontalAlignment="Right" x:Name="CancelProgressButton" Content="Cancel" Margin="5" Width="100" Click="СancellationProgress_Click"/>
         </Grid>
 
     </Grid>

@@ -28,14 +28,14 @@ namespace AfterWindowsInstaller.App
         {
             base.OnStartup(e);
 
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            mainWindow.Show();
+            var mainWindow = _serviceProvider?.GetRequiredService<MainWindow>();
+            mainWindow?.Show();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            _serviceProvider.Dispose();
+            _serviceProvider?.Dispose();
         }
     }
 
