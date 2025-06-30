@@ -55,6 +55,62 @@
       "IconPath": "Resources/AppsIcon/Cursor_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
+    },
+    "IntelliJ IDEA Community Edition": {
+      "WingetUrl": "JetBrains.IntelliJIDEA.Community",
+      "Description": "IntelliJ IDEA Community Edition is a free and open-source integrated development environment (IDE) for Java development",
+      "IconPath": "Resources/AppsIcon/IntelliJ_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    ".NET SDK 7.0": {
+      "WingetUrl": "Microsoft.DotNet.SDK.7",
+      "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    ".NET SDK 8.0": {
+      "WingetUrl": "Microsoft.DotNet.SDK.8",
+      "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    ".NET SDK 9.0": {
+      "WingetUrl": "Microsoft.DotNet.SDK.9",
+      "Description": ".NET SDK is a set of libraries and tools for building .NET applications",
+      "IconPath": "Resources/AppsIcon/DotNet_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OpenJDK 11": {
+      "WingetUrl": "ojdkbuild.openjdk.11.jdk",
+      "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OpenJDK 13": {
+      "WingetUrl": "ojdkbuild.openjdk.13.jdk",
+      "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OpenJDK 14": {
+      "WingetUrl": "ojdkbuild.openjdk.14.jdk",
+      "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OpenJDK 17": {
+      "WingetUrl": "ojdkbuild.openjdk.17.jdk",
+      "Description": "OpenJDK is an open-source implementation of the Java Platform, Standard Edition (Java SE)",
+      "IconPath": "Resources/AppsIcon/OpenJDK_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     }
   }
 }

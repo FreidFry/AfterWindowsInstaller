@@ -1,12 +1,5 @@
 {
   "Other Apps": {
-    "MiniBin": {
-      "Url": "https://github.com/FreidFry/AfterWindowsInstaller/raw/refs/heads/master/Another%20Installer/MiniBin-6.1.1.1.exe",
-      "Description": "MiniBin is an easy but efficient application that allows you to view the icon of the shopping cart for deleted files in the system",
-      "IconPath": "Resources/AppsIcon/MiniBin_Icon.png",
-      "Verb": "runas",
-      "Arguments": "/silent"
-    },
     "SpaceDesk": {
       "wingetUrl": "Datronicsoft.SpacedeskDriver.Server",
       "Description": "SpaceDesk is a software that allows you to use your tablet or smartphone as a second monitor for your Windows PC",

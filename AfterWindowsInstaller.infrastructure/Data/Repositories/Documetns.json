@@ -6,6 +6,27 @@
       "IconPath": "Resources/AppsIcon/SumatraPDF_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
+    },
+    "LibreOffice": {
+      "WingetUrl": "TheDocumentFoundation.LibreOffice",
+      "Description": "LibreOffice is a free and open-source office suite that includes applications for word processing, spreadsheets, presentations, graphics, databases, and more",
+      "IconPath": "Resources/AppsIcon/LibreOffice_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "OnlyOffice": {
+      "WingetUrl": "ONLYOFFICE.DesktopEditors",
+      "Description": "ONLYOFFICE is a free and open-source office suite that includes applications for word processing, spreadsheets, presentations, and more",
+      "IconPath": "Resources/AppsIcon/OnlyOffice_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "Foxit Reader": {
+      "WingetUrl": "Foxit.FoxitReader",
+      "Description": "Foxit Reader is a free PDF reader that allows you to view, annotate, and print PDF documents",
+      "IconPath": "Resources/AppsIcon/FoxitReader_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     }
   }
 }

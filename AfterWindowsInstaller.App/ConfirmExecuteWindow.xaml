@@ -13,7 +13,7 @@
     </Window.Resources>
 
     <Grid >
-        <Grid x:Name="ConfirmGrid" Visibility="Collapsed">
+        <Grid x:Name="ConfirmGrid" Visibility="Visible">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -40,12 +40,12 @@
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
                 <Button x:Name="CancelButton" Content="Cancel" Margin="5" Width="100" Click="CancelButton_Click"/>
-                <Button x:Name="ConfirmButton" Content="Install" Margin="5" Width="100" Click="ConfirmButton_Click"/>
+                <Button x:Name="ConfirmButton" Content="Install" Margin="5" MinWidth="100" Padding="20 0" Click="ConfirmButton_Click"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid x:Name="ProgressGrid" Visibility="Visible">
+        <Grid x:Name="ProgressGrid" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />

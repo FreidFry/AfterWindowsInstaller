@@ -13,6 +13,13 @@
       "IconPath": "Resources/AppsIcon/WinRAR_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
+    },
+    "PeaZip": {
+      "WingetUrl": "Giorgiotani.Peazip",
+      "Description": "PeaZip is a free and open-source file archiver utility that supports various archive formats and provides a user-friendly interface for managing files",
+      "IconPath": "Resources/AppsIcon/PeaZip_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     }
   }
 }

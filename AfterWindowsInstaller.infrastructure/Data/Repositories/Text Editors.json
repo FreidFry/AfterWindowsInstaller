@@ -6,6 +6,13 @@
       "IconPath": "Resources/AppsIcon/SublimeText_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
+    },
+    "Notepad++": {
+      "WingetUrl": "Notepad++.Notepad++",
+      "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages",
+      "IconPath": "Resources/AppsIcon/NotepadPlusPlus_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
     }
   }
 }

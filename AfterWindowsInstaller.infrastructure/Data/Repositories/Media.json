@@ -14,6 +14,20 @@
       "Verb": "runas",
       "Arguments": "/silent"
     },
+    "AIMP": {
+      "WingetUrl": "AIMP.AIMP",
+      "Description": "AIMP is a free audio player for Windows that supports a wide range of audio formats and offers advanced features like sound effects, equalizer, and playlist management",
+      "IconPath": "Resources/AppsIcon/AIMP_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "PotPlayer": {
+      "WingetUrl": "Daum.PotPlayer",
+      "Description": "PotPlayer is a free media player for Windows that supports a wide range of video and audio formats, offering advanced features like subtitle support, video capture, and customizable skins",
+      "IconPath": "Resources/AppsIcon/PotPlayer_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
     "Audacity": {
       "WingetUrl": "Audacity.Audacity",
       "Description": "Audacity is a free, open source, cross-platform audio software for multi-track recording and editing",
@@ -25,6 +39,13 @@
       "WingetUrl": "CodecGuide.K-LiteCodecPack.Mega",
       "Description": "K-Lite Codec Pack is a collection of codecs, DirectShow filters and tools",
       "IconPath": "Resources/AppsIcon/K-Lite_Codec_Pack_Icon.png",
+      "Verb": "runas",
+      "Arguments": "/silent"
+    },
+    "MPC-HC": {
+      "WingetUrl": "clsid2.mpc-hc",
+      "Description": "MPC-HC is a lightweight, open source media player for Windows that supports a wide range of video and audio formats, offering advanced features like subtitle support, video capture, and customizable skins",
+      "IconPath": "Resources/AppsIcon/MPC_HC_Icon.png",
       "Verb": "runas",
       "Arguments": "/silent"
     },
